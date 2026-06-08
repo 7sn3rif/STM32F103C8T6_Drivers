@@ -15,7 +15,7 @@
 
 static uint8_t Current_Angle[16] = {0};
 
-void PCA9685_voidInit(void)
+void PCA9685_Init(void)
 {
     /* I2C Init */
     I2C_Init(PCA9685_I2C_INSTANCE);
@@ -49,7 +49,7 @@ void PCA9685_voidInit(void)
     for (volatile uint32_t i = 0; i < 8000; i++);
 }
 
-void PCA9685_voidWriteAngle(uint8_t Channel, uint8_t Angle)
+void PCA9685_WriteAngle(uint8_t Channel, uint8_t Angle)
 {
     float ratio = (Angle - MIN_ANGLE) * 1.0f / (MAX_ANGLE - MIN_ANGLE);
 
@@ -66,16 +66,16 @@ void PCA9685_voidWriteAngle(uint8_t Channel, uint8_t Angle)
     Current_Angle[Channel] = Angle;
 }
 
-void PCA9685_voidMapAngle(uint8_t Channel, uint8_t InputVal, uint8_t MinVal, uint8_t MaxVal)
+void PCA9685_MapAngle(uint8_t Channel, uint8_t InputVal, uint8_t MinVal, uint8_t MaxVal)
 {
     float ratio = (InputVal - MinVal) * 1.0f / (MaxVal - MinVal);
     uint8_t Desired_Angle = MIN_ANGLE + (uint8_t)(ratio * (MAX_ANGLE - MIN_ANGLE));
 
-    PCA9685_voidWriteAngle(Channel, Desired_Angle);
+    PCA9685_WriteAngle(Channel, Desired_Angle);
     Current_Angle[Channel] = Desired_Angle;
 }
 
-uint8_t PCA9685_u8ReadAngle(uint8_t Channel)
+uint8_t PCA9685_ReadAngle(uint8_t Channel)
 {
     return Current_Angle[Channel];
 }
