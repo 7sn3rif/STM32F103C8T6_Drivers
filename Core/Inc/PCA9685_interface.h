@@ -18,7 +18,7 @@
 * Parameters    : None
 * Return        : void
 *****************************************************************************/
-void PCA9685_voidInit(void);
+void PCA9685_Init(void);
 
 /*****************************************************************************
 * Function Name : PCA9685_voidWriteAngle
@@ -28,7 +28,7 @@ void PCA9685_voidInit(void);
 *   - Angle   : Desired angle in degrees
 * Return        : void
 *****************************************************************************/
-void PCA9685_voidWriteAngle(uint8_t Channel, uint8_t Angle);
+void PCA9685_WriteAngle(uint8_t Channel, uint8_t Angle);
 
 /*****************************************************************************
 * Function Name : PCA9685_voidMapAngle
@@ -40,7 +40,7 @@ void PCA9685_voidWriteAngle(uint8_t Channel, uint8_t Angle);
 *   - MaxVal   : Maximum input value
 * Return        : void
 *****************************************************************************/
-void PCA9685_voidMapAngle(uint8_t Channel, uint8_t InputVal, uint8_t MinVal, uint8_t MaxVal);
+void PCA9685_MapAngle(uint8_t Channel, uint8_t InputVal, uint8_t MinVal, uint8_t MaxVal);
 
 /*****************************************************************************
 * Function Name : PCA9685_u8ReadAngle
@@ -49,7 +49,7 @@ void PCA9685_voidMapAngle(uint8_t Channel, uint8_t InputVal, uint8_t MinVal, uin
 *   - Channel : Servo channel (0-15)
 * Return        : uint8_t (the stored angle value)
 *****************************************************************************/
-uint8_t PCA9685_u8ReadAngle(uint8_t Channel);
+uint8_t PCA9685_ReadAngle(uint8_t Channel);
 
 /*****************************************************************************
 * Function Name : PCA9685_WriteRegister
